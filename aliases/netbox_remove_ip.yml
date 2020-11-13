@@ -8,7 +8,7 @@ formats:
       - "ip remove {{ address }}"
 result:
   format: |
-    Remove an IP Address: `{{ execution.parameters.address }}` with Description: `{{ execution.parameters.description }}` : {~}
+    Remove an IP Address: `{{ execution.parameters.address }}`: {~}
     {% if execution.result.stderr %}
     *Exit Status*: `{{ execution.result.return_code }}`
     *Stderr:* ```{{ execution.result.stderr }}```
