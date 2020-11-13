@@ -1,8 +1,12 @@
 ### Place information about your pack version here.
 ---
-name: st2-pack-template
-description: A blank pack template!
-version: 0.1.0
-author: StackStorm Stanley
-email: stanley@stackstorm.com
-
+ref: st2_chatops_aliases
+name: st2_chatops_aliases
+description: Pack with sample Ansible ChatOps aliases
+keywords:
+  - chatops
+  - aliases
+  - ansible
+version: 0.2.0
+author: Mohammad Nazari
+email: mohammadnazari75@gmail.com
