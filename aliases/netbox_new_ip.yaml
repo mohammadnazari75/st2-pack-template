@@ -1,27 +1,29 @@
 ---
-name: netbox_new_ip
-description: Get an available IP address inside specefic Prefix
-runner_type: local-shell-cmd
-entry_point: ""
-enabled: true
-parameters:
-  sudo:
-    description: "Run command with sudo"
-    type: boolean
-    immutable: true
-    default: true
-  kwarg_op:
-    immutable: true
-  cmd:
-    description: "Command to run"
-    type: string
-    immutable: true
-    default: "/opt/stackstorm/virtualenvs/ansible/bin/ansible-playbook /home/modir/Network-IAC/netbox_playbooks/netbox_new_ip.yml -e '{ "description": {{description}}, "prefix": {{prefix}} }' "
-  description:
-    description: "Description of IP"
-    type: string
-    required: true
-  prefix:
-    description: "Prefix that you need IP inside it"
-    type: string
-    required: true
+name: chatops.ansible_netbox_new_ip
+action_ref: st2_chatops_aliases.netbox_new_ip
+description: Get an available IP address inside a Prefix
+formats:
+  - display: "ip new <prefix> <description>"
+    representation:
+      - "ip new {{ prefix }} {{ description }}"
+result:
+  format: |
+    Get a New IP Inside `{{ execution.parameters.prefix }}` with Description of `{{ execution.parameters.description }}` : {~}
+    {% if execution.result.stderr %}
+    *Exit Status*: `{{ execution.result.return_code }}`
+    *Stderr:* ```{{ execution.result.stderr }}```
+    *Stdout:*
+    {% endif %}
+    ```{{ execution.result.stdout }}```
+  extra:
+    slack:
+      color: "{% if execution.result.succeeded %}good{% else %}danger{% endif %}"
+      fields:
+        - title: Assigned IP
+          value: "{{ execution.result.stdout|regex_replace('(?!changed=1).', '')|wordcount }}"
+          short: true
+        - title: Executed in
+          value: ":timer_clock: {{ execution.elapsed_seconds | to_human_time_from_seconds }}"
+          short: true
+      footer: "{{ execution.id }}"
+      footer_icon: "https://stackstorm.com/wp/wp-content/uploads/2015/01/favicon.png"
