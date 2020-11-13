@@ -16,7 +16,7 @@ parameters:
     description: "Command to run"
     type: string
     immutable: true
-    default: "/opt/stackstorm/virtualenvs/ansible/bin/ansible-playbook /home/modir/Network-IAC/netbox_playbooks/netbox_new_ip.yml -e '{ "description": {{description}}, "prefix": {{prefix}} }' "
+    default: "/opt/stackstorm/virtualenvs/ansible/bin/ansible-playbook /opt/stackstorm/packs/${ST2_ACTION_PACK_NAME}/playbooks/netbox_new_ip.yml --extra-vars='description={{description}} prefix={{prefix}}'"
   description:
     description: "Description of IP"
     type: string
