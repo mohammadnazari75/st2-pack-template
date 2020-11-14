@@ -16,7 +16,7 @@ parameters:
     description: "Command to run"
     type: string
     immutable: true
-    default: "/opt/stackstorm/virtualenvs/ansible/bin/ansible-playbook /home/modir/Network-IAC/netbox_playbooks/netbox_check_ip.yml --extra-vars='address= address="{{ipa}}"'
+    default: "/opt/stackstorm/virtualenvs/ansible/bin/ansible-playbook /home/modir/Network-IAC/netbox_playbooks/netbox_check_ip.yml --extra-vars='address={{ipa}}'
   address:
     description: "IP Address"
     type: string
