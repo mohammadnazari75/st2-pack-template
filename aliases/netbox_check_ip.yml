@@ -3,7 +3,7 @@ name: chatops.ansible_netbox_check_ip
 action_ref: st2_chatops_aliases.netbox_check_ip
 description: Get an IP address information
 formats:
-  - display: "ip info <ip>"
+  - display: "ip info <address=ip>"
     representation:
       - "ip info {{ address=ip }}"
 result:
