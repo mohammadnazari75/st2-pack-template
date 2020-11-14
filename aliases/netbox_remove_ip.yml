@@ -19,7 +19,7 @@ result:
     slack:
       color: "{% if execution.result.succeeded %}good{% else %}danger{% endif %}"
       fields:
-        - title: Assigned IP
+        - title: Removed IP
           value: "{{ execution.result.stdout|regex_replace('(?!changed=1).', '')|wordcount }}"
           short: true
         - title: Executed in
