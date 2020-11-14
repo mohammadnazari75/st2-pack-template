@@ -3,9 +3,9 @@ name: chatops.ansible_netbox_check_ip
 action_ref: st2_chatops_aliases.netbox_check_ip
 description: Get an IP address information
 formats:
-  - display: "ip info <address>"
+  - display: "ip info <ip>"
     representation:
-      - "ip info {{address}}"
+      - "ip info {{ip}}"
 result:
   format: |
     Get an IP Address: `{{ execution.parameters.address }}` Information: {~}
