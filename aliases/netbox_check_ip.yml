@@ -5,7 +5,7 @@ description: Get an IP address information
 formats:
   - display: "ip info <ipa>"
     representation:
-      - "ip info {{ ipa }}"
+      - "ip info address={{ ipa }}"
 result:
   format: |
     Get an IP Address: `{{ execution.parameters.address }}` Information: {~}
