@@ -5,6 +5,10 @@ runner_type: local-shell-cmd
 entry_point: ""
 enabled: true
 parameters:
+  timeout: 
+    required: false
+    type: integer
+    default: 300
   sudo:
     description: "Run command with sudo"
     type: boolean
