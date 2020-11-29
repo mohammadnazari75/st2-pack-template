@@ -8,7 +8,7 @@ formats:
       - "vm new {{ location }} {{ plan }} {{vm_name}}"
 result:
   format: |
-    Deploy a New VM Inside `{{ execution.parameters.location }}` with Description of `{{ execution.parameters.vm_name }}` : {~}
+    Deploy a New VM In `{{ execution.parameters.location }}` Datacenter with Description of `{{ execution.parameters.vm_name }}` : {~}
     {% if execution.result.stderr %}
     *Exit Status*: `{{ execution.result.return_code }}`
     *Stderr:* ```{{ execution.result.stderr }}```
@@ -20,7 +20,7 @@ result:
       color: "{% if execution.result.succeeded %}good{% else %}danger{% endif %}"
       fields:
         - title: Created VM
-          value: "{{ execution.result.stdout|regex_replace('(?!changed=1).', '')|wordcount }}"
+          value: "{% if execution.result.succeeded %}1{% else %}0{% endif %}"
           short: true
         - title: Executed in
           value: ":timer_clock: {{ execution.elapsed_seconds | to_human_time_from_seconds }}"
