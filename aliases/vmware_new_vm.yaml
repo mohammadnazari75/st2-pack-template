@@ -1,0 +1,29 @@
+---
+name: chatops.ansible_vmware_new_vm
+action_ref: st2_chatops_aliases.vmware_new_vm
+description: Deploy VM from template
+formats:
+  - display: "vm new <location> <plan> <vm_name>"
+    representation:
+      - "vm new {{ location }} {{ plan }} {{vm_name}}"
+result:
+  format: |
+    Deploy a New VM Inside `{{ execution.parameters.location }}` with Description of `{{ execution.parameters.vm_name }}` : {~}
+    {% if execution.result.stderr %}
+    *Exit Status*: `{{ execution.result.return_code }}`
+    *Stderr:* ```{{ execution.result.stderr }}```
+    *Stdout:*
+    {% endif %}
+    ```{{ execution.result.stdout }}```
+  extra:
+    slack:
+      color: "{% if execution.result.succeeded %}good{% else %}danger{% endif %}"
+      fields:
+        - title: Created VM
+          value: "{{ execution.result.stdout|regex_replace('(?!changed=1).', '')|wordcount }}"
+          short: true
+        - title: Executed in
+          value: ":timer_clock: {{ execution.elapsed_seconds | to_human_time_from_seconds }}"
+          short: true
+      footer: "{{ execution.id }}"
+      footer_icon: "https://stackstorm.com/wp/wp-content/uploads/2015/01/favicon.png"
