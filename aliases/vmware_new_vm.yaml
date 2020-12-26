@@ -3,9 +3,9 @@ name: chatops.ansible_vmware_new_vm
 action_ref: st2_chatops_aliases.vmware_new_vm
 description: Deploy VM from template
 formats:
-  - display: "vm new <location> <plan> <vm_name>"
+  - display: "vm new <location> <plan> <vm_name> <tag1> <tag2>"
     representation:
-      - "vm new {{ location }} {{ plan }} {{vm_name}}"
+      - "vm new {{ location }} {{ plan }} {{vm_name}} {{tag1}} {{tag2}}"
 result:
   format: |
     Deploy a New VM In `{{ execution.parameters.location }}` Datacenter with Description of `{{ execution.parameters.vm_name }}` : {~}
