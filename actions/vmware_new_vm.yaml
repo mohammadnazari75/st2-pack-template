@@ -20,7 +20,7 @@ parameters:
     description: "Command to run"
     type: string
     immutable: true
-    default: "/opt/stackstorm/virtualenvs/ansible/bin/ansible-playbook /home/modir/Network-IAC/vmware_playbooks/deploy_vm.yaml --extra-vars='LOCATION={{location}} PLAN={{plan}} vm_name={{vm_name}}'"
+    default: "/opt/stackstorm/virtualenvs/ansible/bin/ansible-playbook /home/modir/Network-IAC/vmware_playbooks/deploy_vm.yaml --extra-vars='LOCATION={{location}} PLAN={{plan}} vm_name={{vm_name}} tag1={{tag1}} tag2={{tag2}}'"
   location:
     description: "Location of VM"
     type: string
