@@ -3,9 +3,9 @@ name: chatops.ansible_netbox_new_ip
 action_ref: st2_chatops_aliases.netbox_new_ip
 description: Get an available IP address inside a Prefix
 formats:
-  - display: "ip new <prefix> <description>"
+  - display: "ip new <prefix> <description> <tag1> <tag2>"
     representation:
-      - "ip new {{ prefix }} {{ description }}"
+      - "ip new {{ prefix }} {{ description }} {{ tag1 }} {{ tag2 }}"
 result:
   format: |
     Get a New IP Inside `{{ execution.parameters.prefix }}` with Description of `{{ execution.parameters.description }}` : {~}
