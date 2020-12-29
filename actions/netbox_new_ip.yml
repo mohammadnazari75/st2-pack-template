@@ -25,3 +25,12 @@ parameters:
     description: "Prefix that you need IP inside it"
     type: string
     required: true
+  tag1:
+    description: "Tag1"
+    type: integer
+    required: false
+  tag2:
+    description: "Tag2"
+    type: integer
+    required: false
+   
